@@ -1,0 +1,1 @@
+export const CdnEndPoint = "https://movie-engine-fnagf0e6c3g6b8h3.z01.azurefd.net/content"
