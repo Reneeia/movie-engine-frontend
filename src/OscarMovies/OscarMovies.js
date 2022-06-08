@@ -88,7 +88,7 @@ const OscarMovies = props => {
       const title = movie.isWinner ? 
         <Fragment><TrophyTwoTone twoToneColor="#eb2f96"/> Winner <TrophyTwoTone twoToneColor="#52c41a"/></Fragment>
         : 'Nominees(s)'
-      return <Col span={4}>
+      return <Col lg={6} xl={4} md={8} sm={24}>
         <Card
           size='small'
           title={movie.movieName}
@@ -113,7 +113,7 @@ const OscarMovies = props => {
     return (
       <Fragment>
         <Divider>{category}</Divider>
-        <Row gutter={16} style={{ justifyContent: 'space-around' }}>
+        <Row gutter={16} style={{ justifyContent: 'space-evenly', margin: '20px' }}>
           {movieView}
         </Row>
       </Fragment>
