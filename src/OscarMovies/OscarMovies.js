@@ -26,7 +26,6 @@ const OscarMovies = props => {
     let moviePicName = movie.movieName.toLowerCase().replaceAll(' ', '_');
     moviePicName = moviePicName.replaceAll(':','');
     moviePicName = moviePicName.normalize("NFD").replace(/\p{Diacritic}/gu, "")
-    console.log(moviePicName)
     return `${CdnEndPoint}/oscar_${movie.seasonOfOscar}/movie_posters/${moviePicName}.jpg`;
   }
 
@@ -43,9 +42,8 @@ const OscarMovies = props => {
   }, {})
 
   const getOscarSeasonSelectionView = () => {
-    console.log(OscarSeasons)
     const options = OscarSeasons.map(season => (
-      <Option value={season}>{season}</Option>
+      <Option key={season} value={season}>{season}</Option>
     ));
     return (<Fragment>
       <div style={{ margin: 10, display: 'inline-flex' }}>
@@ -60,7 +58,7 @@ const OscarMovies = props => {
         optionFilterProp="children"
         onChange={onOscarSeasonChange}
         filterOption={(input, option) => option.children.includes(input)}
-        filterSort={(optionA, optionB) => parseInt(optionA.children) - parseInt(optionB.children)
+        filterSort={(optionA, optionB) => parseInt(optionB.children) - parseInt(optionA.children)
         }
       >
         {options}
@@ -88,7 +86,7 @@ const OscarMovies = props => {
       const title = movie.isWinner ? 
         <Fragment><TrophyTwoTone twoToneColor="#eb2f96"/> Winner <TrophyTwoTone twoToneColor="#52c41a"/></Fragment>
         : 'Nominees(s)'
-      return <Col lg={6} xl={4} md={8} sm={24}>
+      return <Col key={movie.id} lg={6} xl={4} md={8} sm={24}>
         <Card
           size='small'
           title={movie.movieName}
@@ -111,7 +109,7 @@ const OscarMovies = props => {
     })
 
     return (
-      <Fragment>
+      <Fragment key={category}>
         <Divider>{category}</Divider>
         <Row gutter={16} style={{ justifyContent: 'space-evenly', margin: '20px' }}>
           {movieView}

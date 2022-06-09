@@ -1,1 +1,1 @@
-export const OscarSeasons = Array.from({ length: 92 }, (_, i) => (i + 1).toString())
+export const OscarSeasons = Array.from({ length: 92 }, (_, i) => (i + 1))
